@@ -1,5 +1,6 @@
-import express from "express";
+import express, { json } from "express";
 import { connectDB } from "./db/db.js";
+import userRoute from "./routes/user.route.js";
 
 const PORT = process.env.PORT || 8000;
 
@@ -12,7 +13,10 @@ connectDB(process.env.MONGO_URL)
   });
 
 const app = express();
+app.use(json());
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
+
+app.use("/api", userRoute);
