@@ -2,9 +2,11 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY package* .
 
-RUN npm i 
+RUN npm install
+
+COPY . .
 
 EXPOSE 8000
 
